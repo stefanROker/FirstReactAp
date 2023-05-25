@@ -1,0 +1,12 @@
+.brand-item {
+    background-color: beige;
+    min-height: 50px;
+    margin-top: 10px;
+    padding: 5px 5px;
+    /* display: flex; */
+    /* justify-content: center; */
+}
+
+.brand-item:hover {
+    cursor: pointer;
+}
