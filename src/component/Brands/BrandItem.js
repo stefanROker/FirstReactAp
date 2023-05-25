@@ -1,9 +1,13 @@
-import { useState } from "react";
 import "./BrandItem.css";
 
 /**
  * @callback deleteBrandCallback
  * @param {string} name - The name of the deleted brand.
+ */
+
+/**
+ * @callback brandClickedCallback
+ * @param {string} name - The name of the brand that was clicked.
  */
 
 /**
@@ -20,22 +24,23 @@ const BrandItemButtons = (props) => {
 
 /**
  *
- * @param {{brand: {name: string, description: string}, onDeleteBrand: deleteBrandCallback}} props
+ * @param {Object} props
+ * @param {{name: string, description: string}} props.brand
+ * @param {string} props.toggledBrand
+ * @param {deleteBrandCallback} props.onDeleteBrand
+ * @param {brandClickedCallback} props.onBrandClick
  * @returns
  */
 const BrandItem = (props) => {
-  const [showButtons, setShowButtons] = useState(false);
-
   return (
     <div
       className="brand-item"
-      // Toggle showButtons
-      onClick={() => setShowButtons((prev) => !prev)}
+      onClick={() => props.onBrandClick(props.brand.name)}
     >
       <h3>{props.brand.name}</h3>
       <hr />
       <p>{props.brand.description || "No description provided"}</p>
-      {showButtons && (
+      {props.toggledBrand === props.brand.name && (
         <BrandItemButtons
           name={props.brand.name}
           onDeleteBrand={props.onDeleteBrand}
