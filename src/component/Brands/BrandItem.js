@@ -11,18 +11,6 @@ import "./BrandItem.css";
  */
 
 /**
- * @param {{name: string, onDeleteBrand: deleteBrandCallback}} props
- */
-const BrandItemButtons = (props) => {
-  return (
-    <div>
-      <button>Edit</button>
-      <button onClick={() => props.onDeleteBrand(props.name)}>Delete</button>
-    </div>
-  );
-};
-
-/**
  *
  * @param {Object} props
  * @param {{name: string, description: string}} props.brand
@@ -32,19 +20,24 @@ const BrandItemButtons = (props) => {
  * @returns
  */
 const BrandItem = (props) => {
+  const brand = props.brand;
+
   return (
     <div
       className="brand-item"
       onClick={() => props.onBrandClick(props.brand.name)}
     >
-      <h3>{props.brand.name}</h3>
+      <h3>{brand.name}</h3>
       <hr />
-      <p>{props.brand.description || "No description provided"}</p>
-      {props.toggledBrand === props.brand.name && (
-        <BrandItemButtons
-          name={props.brand.name}
-          onDeleteBrand={props.onDeleteBrand}
-        />
+      <p>{brand.description || "No description provided"}</p>
+      {/* Show Edit/Delete buttons only if this card is toggled. */}
+      {props.toggledBrand === brand.name && (
+        <div>
+          <button>Edit</button>
+          <button onClick={() => props.onDeleteBrand(brand.name)}>
+            Delete
+          </button>
+        </div>
       )}
     </div>
   );
