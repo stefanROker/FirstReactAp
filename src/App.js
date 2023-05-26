@@ -1,5 +1,5 @@
 import './App.css';
-import Brand from './component/Brands/Brands';
+import Brand from './components/Brands/Brands';
 
 function App() {
   return (

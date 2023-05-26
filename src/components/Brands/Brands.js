@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BrandItem from "./BrandItem";
+import BrandItem from "./BrandItem/BrandItem";
 import "./Brands.css";
 import NewBrandModal from "./NewBrandModal";
 
@@ -37,6 +37,38 @@ const DUMMY_DATA = [
 ];
 
 /**
+ * @callback updateBrandCallback
+ * @param {string} oldName - The old name of the brand.
+ * @param {{name: string, description: string}} updatedBrand - Brand object with updated values.
+ * @returns {void}
+ */
+
+/**
+ * Deletes a brand.
+ * @callback deleteBrandCallback
+ * @param {string} name - The name of the deleted brand.
+ */
+
+/**
+ * Toggles a certain brand to show the Edit/Delete buttons for it.
+ * @callback brandClickCallback
+ * @param {string} name - The name of the brand that was clicked.
+ */
+
+/**
+ * Closes the add new brand modal.
+ * @callback closeModalCallback
+ * @returns {void}
+ */
+
+/**
+ * Add a new brand.
+ * @callback newBrandCallback
+ * @param {{name: string, description: string}} newBrand
+ * @returns {void}
+ */
+
+/**
  *
  * @param {Object} props
  * @returns
@@ -49,6 +81,13 @@ const Brand = (props) => {
 
   const newBrandHandler = (brand) => {
     setBrands((prevBrands) => [{ ...brand, id: Math.random() }, ...prevBrands]);
+  };
+
+  const updateBrandHandler = (oldName, updatedBrand) => {
+    // Return an array where we replace the updated brand
+    setBrands((prevBrands) =>
+      prevBrands.map((brand) => (brand.name == oldName ? updatedBrand : brand))
+    );
   };
 
   const deleteBrandHandler = (name) => {
@@ -88,6 +127,7 @@ const Brand = (props) => {
             brand={brand}
             onDeleteBrand={deleteBrandHandler}
             onBrandClick={brandClickHandler}
+            onUpdateBrand={updateBrandHandler}
             toggledBrand={toggledBrand}
           />
         ))}

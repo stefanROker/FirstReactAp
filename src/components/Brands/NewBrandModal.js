@@ -2,39 +2,19 @@ import { useState } from "react";
 import "./NewBrandModal.css";
 
 /**
- * Closes the add new brand modal.
- * @callback closeModalCallback
- * @returns {void}
- */
-
-/**
- * Callback to be used when a new brand is created.
- * @callback newBrandCallback
- * @param {{name: string, description: string}} newBrand
- * @returns {void}
- */
-
-/**
  * @param {{onCloseModal: closeModalCallback, onNewBrand: newBrandCallback}} props
  */
 const NewBrandModal = (props) => {
   const [newName, setNewName] = useState("");
   const [newDescription, setNewDescription] = useState("");
 
-  const closeModal = () => {
-    setNewName("");
-    setNewDescription("");
-    props.onCloseModal();
-  };
-
   const submitHandler = (e) => {
     e.preventDefault();
-    const newBrand = {
+    props.onCloseModal();
+    props.onNewBrand({
       name: newName,
       description: newDescription,
-    };
-    closeModal();
-    props.onNewBrand(newBrand);
+    });
   };
 
   return (
@@ -58,7 +38,7 @@ const NewBrandModal = (props) => {
 
           <div className="modal-buttons">
             <button type="submit">Create</button>
-            <button type="button" onClick={() => closeModal()}>
+            <button type="button" onClick={props.onCloseModal}>
               Cancel
             </button>
           </div>

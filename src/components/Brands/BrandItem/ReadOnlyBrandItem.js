@@ -1,29 +1,19 @@
-import "./BrandItem.css";
+import "./ReadOnlyBrandItem.css";
 
 /**
- * @callback deleteBrandCallback
- * @param {string} name - The name of the deleted brand.
- */
-
-/**
- * @callback brandClickedCallback
- * @param {string} name - The name of the brand that was clicked.
- */
-
-/**
- *
  * @param {Object} props
  * @param {{name: string, description: string}} props.brand
  * @param {string} props.toggledBrand
- * @param {deleteBrandCallback} props.onDeleteBrand
- * @param {brandClickedCallback} props.onBrandClick
+ * @param {import("../Brands").deleteBrandCallback} props.onDeleteBrand
+ * @param {import("../Brands").brandClickCallback} props.onBrandClick
+ * @param {import("./BrandItem").editModeChangeCallback} props.onEditModeChange
  * @returns
  */
-const BrandItem = (props) => {
+const ReadOnlyBrandItem = (props) => {
   const brand = props.brand;
 
   return (
-    <div className="brand-item">
+    <div className="read-only-brand-item">
       <div onClick={() => props.onBrandClick(brand.name)}>
         <h3>{brand.name}</h3>
         <hr />
@@ -32,7 +22,9 @@ const BrandItem = (props) => {
       {/* Show Edit/Delete buttons only if this card is toggled. */}
       {props.toggledBrand === brand.name && (
         <div>
-          <button type="button">Edit</button>
+          <button type="button" onClick={() => props.onEditModeChange(true)}>
+            Edit
+          </button>
           <button
             type="buttotn"
             onClick={() => props.onDeleteBrand(brand.name)}
@@ -45,4 +37,4 @@ const BrandItem = (props) => {
   );
 };
 
-export default BrandItem;
+export default ReadOnlyBrandItem;
