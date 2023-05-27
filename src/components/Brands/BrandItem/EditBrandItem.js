@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./EditBrandItem.css";
+import styles from "./EditBrandItem.module.css";
 
 /**
  *
@@ -38,7 +38,7 @@ const EditBrandItem = (props) => {
   };
 
   return (
-    <form className="edit-brand-item">
+    <form className={styles["edit-brand-item"]}>
       <input
         type="text"
         size={updatedName.length}

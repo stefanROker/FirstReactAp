@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./BrandItem.css";
+import styles from "./BrandItem.module.css";
 import EditBrandItem from "./EditBrandItem";
 import ReadOnlyBrandItem from "./ReadOnlyBrandItem";
 
@@ -27,7 +27,7 @@ const BrandItem = (props) => {
   }
 
   return (
-    <div className="brand-item">
+    <div className={styles["brand-item"]}>
       {isEditing ? (
         <EditBrandItem
           brand={props.brand}

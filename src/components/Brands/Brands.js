@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BrandItem from "./BrandItem/BrandItem";
-import "./Brands.css";
+import styles from "./Brands.module.css";
 import NewBrandModal from "./NewBrandModal";
 
 const DUMMY_DATA = [
@@ -108,7 +108,7 @@ const Brand = (props) => {
   };
 
   return (
-    <div className="brands">
+    <div className={styles.brands}>
       {showNewBrandModal && (
         <NewBrandModal
           onNewBrand={newBrandHandler}

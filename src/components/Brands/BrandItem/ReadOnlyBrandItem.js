@@ -1,4 +1,4 @@
-import "./ReadOnlyBrandItem.css";
+import styles from "./ReadOnlyBrandItem.module.css";
 
 /**
  * @param {Object} props
@@ -13,7 +13,7 @@ const ReadOnlyBrandItem = (props) => {
   const brand = props.brand;
 
   return (
-    <div className="read-only-brand-item">
+    <div className={styles["read-only-brand-item"]}>
       <div onClick={() => props.onBrandClick(brand.name)}>
         <h3>{brand.name}</h3>
         <hr />
