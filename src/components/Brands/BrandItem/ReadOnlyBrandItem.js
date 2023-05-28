@@ -1,6 +1,8 @@
+import { useState } from "react";
 import Button from "../../UI/Button";
 import ButtonGroup from "../../UI/ButtonGroup";
 import styles from "./ReadOnlyBrandItem.module.css";
+import ConfirmationModal from "../../UI/ConfirmationModal";
 
 /**
  * @param {Object} props
@@ -13,9 +15,21 @@ import styles from "./ReadOnlyBrandItem.module.css";
  */
 const ReadOnlyBrandItem = (props) => {
   const brand = props.brand;
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   return (
-    <div className={styles["read-only-brand-item"]}>
+    <div className={styles["brand-item"]}>
+      {showDeleteModal && (
+        <ConfirmationModal
+          onYes={() => {
+            props.onDeleteBrand(brand.name);
+            setShowDeleteModal(false);
+          }}
+          onNo={() => setShowDeleteModal(false)}
+        >
+          Are you sure you want to delete this brand?
+        </ConfirmationModal>
+      )}
       <div onClick={() => props.onBrandClick(brand.name)}>
         <h3>{brand.name}</h3>
         <hr />
@@ -27,10 +41,7 @@ const ReadOnlyBrandItem = (props) => {
           <Button type="button" onClick={() => props.onEditModeChange(true)}>
             Edit
           </Button>
-          <Button
-            type="buttotn"
-            onClick={() => props.onDeleteBrand(brand.name)}
-          >
+          <Button type="button" onClick={() => setShowDeleteModal(true)}>
             Delete
           </Button>
         </ButtonGroup>
