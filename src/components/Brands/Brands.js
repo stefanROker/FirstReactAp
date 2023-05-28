@@ -2,6 +2,7 @@ import { useState } from "react";
 import BrandItem from "./BrandItem/BrandItem";
 import styles from "./Brands.module.css";
 import NewBrandModal from "./NewBrandModal";
+import Button from "../UI/Button";
 
 const DUMMY_DATA = [
   {
@@ -116,9 +117,9 @@ const Brand = (props) => {
         />
       )}
       <div>
-        <button onClick={() => setShowNewBrandModal(true)}>
+        <Button onClick={() => setShowNewBrandModal(true)}>
           Add new brand
-        </button>
+        </Button>
       </div>
       <div>
         {brands.map((brand) => (

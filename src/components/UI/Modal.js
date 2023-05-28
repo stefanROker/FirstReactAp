@@ -5,7 +5,7 @@ import styles from "./Modal.module.css";
  */
 const Modal = (props) => {
   return (
-    <div {...props} className={`${styles.modal} ${props.className}`}>
+    <div {...props} className={`${styles.modal} ${props.className || ""}`}>
       <div className={styles["modal-content"]}>{props.children}</div>
     </div>
   );

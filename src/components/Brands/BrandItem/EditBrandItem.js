@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./EditBrandItem.module.css";
+import Button from "../../UI/Button";
+import ButtonGroup from "../../UI/ButtonGroup";
 
 /**
  *
@@ -52,14 +54,14 @@ const EditBrandItem = (props) => {
         onInput={textareaInputHandler}
         onChange={(e) => setUpdatedDescription(e.target.value)}
       ></textarea>
-      <div>
-        <button type="button" onClick={saveClickHandler}>
+      <ButtonGroup align="left">
+        <Button type="button" onClick={saveClickHandler}>
           Save
-        </button>
-        <button type="button" onClick={cancelClickHandler}>
+        </Button>
+        <Button type="button" onClick={cancelClickHandler}>
           Cancel
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
     </form>
   );
 };

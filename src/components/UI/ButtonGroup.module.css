@@ -1,0 +1,15 @@
+.button-group-right {
+  text-align: right;
+}
+
+.button-group-right button {
+  margin-left: 10px;
+}
+
+.button-group-left {
+  text-align: left;
+}
+
+.button-group-left button {
+  margin-right: 10px;
+}

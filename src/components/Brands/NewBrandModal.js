@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./NewBrandModal.module.css";
 import Modal from "../UI/Modal";
 import Button from "../UI/Button";
+import ButtonGroup from "../UI/ButtonGroup";
 
 /**
  * @param {{onCloseModal: closeModalCallback, onNewBrand: newBrandCallback}} props
@@ -37,12 +38,12 @@ const NewBrandModal = (props) => {
           value={newDescription}
         />
 
-        <div className={styles["modal-buttons"]}>
+        <ButtonGroup align="right">
           <Button type="submit">Create</Button>
           <Button type="button" onClick={props.onCloseModal}>
             Cancel
           </Button>
-        </div>
+        </ButtonGroup>
       </form>
     </Modal>
   );

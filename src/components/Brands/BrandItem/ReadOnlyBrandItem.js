@@ -1,3 +1,5 @@
+import Button from "../../UI/Button";
+import ButtonGroup from "../../UI/ButtonGroup";
 import styles from "./ReadOnlyBrandItem.module.css";
 
 /**
@@ -21,17 +23,17 @@ const ReadOnlyBrandItem = (props) => {
       </div>
       {/* Show Edit/Delete buttons only if this card is toggled. */}
       {props.toggledBrand === brand.name && (
-        <div>
-          <button type="button" onClick={() => props.onEditModeChange(true)}>
+        <ButtonGroup align="left">
+          <Button type="button" onClick={() => props.onEditModeChange(true)}>
             Edit
-          </button>
-          <button
+          </Button>
+          <Button
             type="buttotn"
             onClick={() => props.onDeleteBrand(brand.name)}
           >
             Delete
-          </button>
-        </div>
+          </Button>
+        </ButtonGroup>
       )}
     </div>
   );
