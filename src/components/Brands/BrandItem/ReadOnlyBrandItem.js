@@ -18,7 +18,9 @@ const ReadOnlyBrandItem = (props) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   return (
-    <div className={styles["brand-item"]}>
+    <div
+      className={`${styles["brand-item"]} ${!showDeleteModal && styles.hover}`}
+    >
       {showDeleteModal && (
         <ConfirmationModal
           onYes={() => {

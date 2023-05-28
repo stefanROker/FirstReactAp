@@ -27,7 +27,7 @@ const BrandItem = (props) => {
   }
 
   return (
-    <div className={styles["brand-item"]}>
+    <div className={styles["brand-item-card"]}>
       {isEditing ? (
         <EditBrandItem
           brand={props.brand}
