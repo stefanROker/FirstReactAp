@@ -27,7 +27,6 @@ const EditBrandItem = (props) => {
   };
 
   const cancelClickHandler = () => {
-    // No need to clean state as the component will be re-rendered due to parent state change
     props.onEditModeChange(false);
   };
 

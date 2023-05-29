@@ -27,7 +27,7 @@ const BrandItem = (props) => {
   }
 
   return (
-    <div className={styles["brand-item-card"]}>
+    <li className={styles["brand-item-card"]}>
       {isEditing ? (
         <EditBrandItem
           brand={props.brand}
@@ -44,7 +44,7 @@ const BrandItem = (props) => {
           onEditModeChange={setIsEditing}
         />
       )}
-    </div>
+    </li>
   );
 };
 

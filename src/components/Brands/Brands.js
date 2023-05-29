@@ -121,7 +121,7 @@ const Brand = (props) => {
           Add new brand
         </Button>
       </div>
-      <div>
+      <ul>
         {brands.map((brand) => (
           <BrandItem
             key={brand.name}
@@ -132,7 +132,7 @@ const Brand = (props) => {
             toggledBrand={toggledBrand}
           />
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

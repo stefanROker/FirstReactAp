@@ -21,6 +21,7 @@ const ReadOnlyBrandItem = (props) => {
     <div
       className={`${styles["brand-item"]} ${!showDeleteModal && styles.hover}`}
     >
+      {/* Delete confirmation modal. */}
       {showDeleteModal && (
         <ConfirmationModal
           onYes={() => {
@@ -32,11 +33,13 @@ const ReadOnlyBrandItem = (props) => {
           Are you sure you want to delete this brand?
         </ConfirmationModal>
       )}
+
       <div onClick={() => props.onBrandClick(brand.name)}>
         <h3>{brand.name}</h3>
         <hr />
         <p>{brand.description || "No description provided"}</p>
       </div>
+
       {/* Show Edit/Delete buttons only if this card is toggled. */}
       {props.toggledBrand === brand.name && (
         <ButtonGroup align="left">
