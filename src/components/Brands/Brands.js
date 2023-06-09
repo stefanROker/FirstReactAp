@@ -3,6 +3,7 @@ import BrandItem from "./BrandItem/BrandItem";
 import styles from "./Brands.module.css";
 import NewBrandModal from "./NewBrandModal";
 import Button from "../UI/Button";
+import ReactDOM from "react-dom";
 
 const DUMMY_DATA = [
   {
@@ -110,12 +111,14 @@ const Brand = (props) => {
 
   return (
     <div className={styles.brands}>
-      {showNewBrandModal && (
-        <NewBrandModal
-          onNewBrand={newBrandHandler}
-          onCloseModal={() => setShowNewBrandModal(false)}
-        />
-      )}
+      {showNewBrandModal &&
+        ReactDOM.createPortal(
+          <NewBrandModal
+            onNewBrand={newBrandHandler}
+            onCloseModal={() => setShowNewBrandModal(false)}
+          />,
+          document.body
+        )}
       <div>
         <Button onClick={() => setShowNewBrandModal(true)}>
           Add new brand

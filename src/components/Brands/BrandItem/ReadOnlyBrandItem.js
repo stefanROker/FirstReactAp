@@ -3,6 +3,7 @@ import Button from "../../UI/Button";
 import ButtonGroup from "../../UI/ButtonGroup";
 import styles from "./ReadOnlyBrandItem.module.css";
 import ConfirmationModal from "../../UI/ConfirmationModal";
+import ReactDOM from "react-dom";
 
 /**
  * @param {Object} props
@@ -18,21 +19,21 @@ const ReadOnlyBrandItem = (props) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   return (
-    <div
-      className={`${styles["brand-item"]} ${!showDeleteModal && styles.hover}`}
-    >
+    <div className={`${styles["brand-item"]} ${styles.hover}`}>
       {/* Delete confirmation modal. */}
-      {showDeleteModal && (
-        <ConfirmationModal
-          onYes={() => {
-            props.onDeleteBrand(brand.name);
-            setShowDeleteModal(false);
-          }}
-          onNo={() => setShowDeleteModal(false)}
-        >
-          Are you sure you want to delete this brand?
-        </ConfirmationModal>
-      )}
+      {showDeleteModal &&
+        ReactDOM.createPortal(
+          <ConfirmationModal
+            onYes={() => {
+              props.onDeleteBrand(brand.name);
+              setShowDeleteModal(false);
+            }}
+            onNo={() => setShowDeleteModal(false)}
+          >
+            Are you sure you want to delete this brand?
+          </ConfirmationModal>,
+          document.body
+        )}
 
       <div onClick={() => props.onBrandClick(brand.name)}>
         <h3>{brand.name}</h3>
