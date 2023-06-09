@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./EditBrandItem.module.css";
 import Button from "../../UI/Button";
 import ButtonGroup from "../../UI/ButtonGroup";
@@ -13,11 +13,8 @@ import ButtonGroup from "../../UI/ButtonGroup";
  */
 const EditBrandItem = (props) => {
   const brand = props.brand;
-
-  const [updatedName, setUpdatedName] = useState(brand.name);
-  const [updatedDescription, setUpdatedDescription] = useState(
-    brand.description
-  );
+  const nameRef = useRef();
+  const descriptionRef = useRef();
 
   // TODO AB: How to apply this on load as well?
   // Function that resizes the textarea element to fit the description.
@@ -32,8 +29,8 @@ const EditBrandItem = (props) => {
 
   const saveClickHandler = () => {
     props.onUpdateBrand(brand.name, {
-      name: updatedName,
-      description: updatedDescription,
+      name: nameRef.current.value,
+      description: descriptionRef.current.value,
     });
     props.onEditModeChange(false);
   };
@@ -42,16 +39,16 @@ const EditBrandItem = (props) => {
     <form className={styles["edit-brand-item"]}>
       <input
         type="text"
-        size={updatedName.length}
-        value={updatedName}
-        onChange={(e) => setUpdatedName(e.target.value)}
+        size={props.brand.length}
+        defaultValue={props.brand.name}
+        ref={nameRef}
         required
       />
       <hr />
       <textarea
-        value={updatedDescription}
+        defaultValue={props.brand.description}
         onInput={textareaInputHandler}
-        onChange={(e) => setUpdatedDescription(e.target.value)}
+        ref={descriptionRef}
       ></textarea>
       <ButtonGroup align="left">
         <Button type="button" onClick={saveClickHandler}>
