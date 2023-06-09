@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./EditBrandItem.module.css";
 import Button from "../../UI/Button";
 import ButtonGroup from "../../UI/ButtonGroup";
@@ -16,12 +16,15 @@ const EditBrandItem = (props) => {
   const nameRef = useRef();
   const descriptionRef = useRef();
 
-  // TODO AB: How to apply this on load as well?
-  // Function that resizes the textarea element to fit the description.
-  const textareaInputHandler = (e) => {
-    e.target.style.height = "";
-    e.target.style.height = e.target.scrollHeight + 2 + "px";
+  // Resize the textarea to fit all characters without the need of a scrollbar
+  const resizeTextarea = () => {
+    descriptionRef.current.style.height = "";
+    descriptionRef.current.style.height =
+      descriptionRef.current.scrollHeight + 2 + "px";
   };
+
+  // Resize the textarea immediately after rendering the component
+  useEffect(resizeTextarea, []);
 
   const cancelClickHandler = () => {
     props.onEditModeChange(false);
@@ -47,7 +50,7 @@ const EditBrandItem = (props) => {
       <hr />
       <textarea
         defaultValue={props.brand.description}
-        onInput={textareaInputHandler}
+        onInput={resizeTextarea}
         ref={descriptionRef}
       ></textarea>
       <ButtonGroup align="left">

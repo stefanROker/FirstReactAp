@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styles from "./NewBrandModal.module.css";
 import Modal from "../UI/Modal";
 import Button from "../UI/Button";
