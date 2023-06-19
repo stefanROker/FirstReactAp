@@ -52,12 +52,6 @@ const DUMMY_DATA = [
  */
 
 /**
- * Toggles a certain brand to show the Edit/Delete buttons for it.
- * @callback brandClickCallback
- * @param {string} name - The name of the brand that was clicked.
- */
-
-/**
  * Closes the add new brand modal.
  * @callback closeModalCallback
  * @returns {void}
@@ -78,8 +72,6 @@ const DUMMY_DATA = [
 const Brand = (props) => {
   const [brands, setBrands] = useState(DUMMY_DATA);
   const [showNewBrandModal, setShowNewBrandModal] = useState(false);
-  // Track which brand is toggled (expanded so you can see the Edit/Delete buttons)
-  const [toggledBrand, setToggledBrand] = useState(null);
 
   const newBrandHandler = (brand) => {
     setBrands((prevBrands) => [{ ...brand, id: Math.random() }, ...prevBrands]);
@@ -96,17 +88,6 @@ const Brand = (props) => {
     setBrands((prevBrands) =>
       prevBrands.filter((brand) => brand.name !== name)
     );
-
-    // Probably not necessary, but a good sanity stuff
-    if (name === toggledBrand) {
-      setToggledBrand(null);
-    }
-  };
-
-  // TODO: How to set to null whenever clicked anywhere outside the clickable BrandItems?
-  const brandClickHandler = (name) => {
-    // If the same brand was toggled, set the value back to null. Otherwise, set the value to the new name.
-    setToggledBrand((prevName) => (prevName === name ? null : name));
   };
 
   return (
@@ -130,9 +111,7 @@ const Brand = (props) => {
             key={brand.name}
             brand={brand}
             onDeleteBrand={deleteBrandHandler}
-            onBrandClick={brandClickHandler}
             onUpdateBrand={updateBrandHandler}
-            toggledBrand={toggledBrand}
           />
         ))}
       </ul>

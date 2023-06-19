@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./BrandItem.module.css";
 import EditBrandItem from "./EditBrandItem";
 import ReadOnlyBrandItem from "./ReadOnlyBrandItem";
+import BrandContext from "../../../store/brand-context";
 
 /**
  * Changes the edit mode of this brand.
@@ -12,17 +13,17 @@ import ReadOnlyBrandItem from "./ReadOnlyBrandItem";
 /**
  * @param {Object} props
  * @param {{name: string, description: string}} props.brand
- * @param {string} props.toggledBrand
  * @param {import("../Brands").deleteBrandCallback} props.onDeleteBrand
- * @param {import("../Brands").brandClickCallback} props.onBrandClick
  * @param {import("../Brands").updateBrandCallback} props.onUpdateBrand
  * @returns
  */
 const BrandItem = (props) => {
   const [isEditing, setIsEditing] = useState(false);
 
+  const brandContext = useContext(BrandContext);
+
   // If we are in edit mode and another brand has been toggled, disable edit mode here
-  if (isEditing && props.toggledBrand !== props.brand.name) {
+  if (isEditing && brandContext.toggledBrand !== props.brand.name) {
     setIsEditing(false);
   }
 
@@ -31,16 +32,13 @@ const BrandItem = (props) => {
       {isEditing ? (
         <EditBrandItem
           brand={props.brand}
-          toggledBrand={props.toggledBrand}
           onEditModeChange={setIsEditing}
           onUpdateBrand={props.onUpdateBrand}
         />
       ) : (
         <ReadOnlyBrandItem
           brand={props.brand}
-          toggledBrand={props.toggledBrand}
           onDeleteBrand={props.onDeleteBrand}
-          onBrandClick={props.onBrandClick}
           onEditModeChange={setIsEditing}
         />
       )}
