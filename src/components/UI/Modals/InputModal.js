@@ -19,8 +19,8 @@ const InputModal = (props) => {
         ))}
 
         <ButtonGroup align="right">
-          <Button type="submit">Create</Button>
-          <Button type="button" onClick={props.onCloseModal}>
+          <Button button={{ type: "submit" }}>Create</Button>
+          <Button button={{ type: "button", onClick: props.onCloseModal }}>
             Cancel
           </Button>
         </ButtonGroup>

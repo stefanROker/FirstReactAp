@@ -18,23 +18,25 @@ const AdminPanel = (props) => {
           />,
           document.body
         )}
+
       <Card className={classes["table-card"]}>
         <div className={classes["table-header"]}>
           <Button
-            className={classes["add-button"]}
-            onClick={() => setShowModal(true)}
+            button={{
+              className: classes["add-button"],
+              onClick: () => setShowModal(true),
+            }}
           >
             {props.button.text}
           </Button>
           <input
-            className={classes["search-box"]}
+            className={classes["search-input"]}
             type="text"
             placeholder="Search..."
           ></input>
         </div>
         <div className={classes["table-wrapper"]}>
           <table className={classes["table-data"]}>
-            <caption>{props.table.caption}</caption>
             <thead>
               <tr>
                 {props.table.heading.map((el, idx) => (

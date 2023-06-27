@@ -1,7 +1,7 @@
 .table-card {
   margin: 20px;
   width: 100vw;
-  height: calc(100vh - 2 * margin);
+  height: 100%;
   background: #fffafb;
   box-shadow: -7px 3px 21px 1px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -12,25 +12,43 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding: 1em 0;
+  background: #fffafb;
+  border-bottom: 4px solid rgba(19, 21, 21, 0.2);
 }
 
 .add-button {
   margin-left: 10%;
   width: auto;
   font-size: 12px;
+  box-shadow: -7px 3px 21px 1px rgba(0, 0, 0, 0.25);
+  height: 50px;
+  width: 120px;
+  background-color: #59a5d8;
+  color: #fffafb;
+  border-radius: 5px;
+  font-family: "Roboto";
+  font-size: 20px;
+  border-style: none;
 }
 
-.search-box {
-  margin-right: 10%;
-  width: auto;
-  font-size: 20px;
+.search-input {
+  box-shadow: -7px 3px 21px 1px rgba(0, 0, 0, 0.25);
+  border-style: solid;
+  width: 25rem;
+  height: auto;
+  margin-right: 5%;
+  border-bottom: 1px solid #131515;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 16px;
 }
 
 .table-wrapper {
-  overflow: scroll;
-  height: 1000px;
+  overflow-y: scroll;
+  overflow-x: hiden;
+  height: 80vh;
 }
 
 .table-data {
