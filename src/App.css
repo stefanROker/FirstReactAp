@@ -5,6 +5,7 @@ body {
   height: 100%;
   overflow: hidden;
   margin: 0;
+  font-family: "Roboto";
 }
 
 a {
@@ -14,4 +15,8 @@ a {
 
 #admin-panel {
   display: flex;
+}
+
+.shadow {
+  box-shadow: -7px 3px 21px 1px rgba(0, 0, 0, 0.25);
 }

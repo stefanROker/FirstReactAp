@@ -19,24 +19,24 @@ const AdminPanel = (props) => {
           document.body
         )}
 
-      <Card className={classes["table-card"]}>
+      <Card className={`${classes["table-card"]} shadow`}>
         <div className={classes["table-header"]}>
           <Button
             button={{
-              className: classes["add-button"],
+              className: `${classes["add-button"]} shadow`,
               onClick: () => setShowModal(true),
             }}
           >
             {props.button.text}
           </Button>
           <input
-            className={classes["search-input"]}
+            className={`${classes["search-input"]} shadow`}
             type="text"
             placeholder="Search..."
           ></input>
         </div>
         <div className={classes["table-wrapper"]}>
-          <table className={classes["table-data"]}>
+          <table className={`${classes["table-data"]} shadow`}>
             <thead>
               <tr>
                 {props.table.heading.map((el, idx) => (
