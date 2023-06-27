@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import AdminPanel from "../AdminPanel";
-import logo from "../../../FE files/samsung-logo-transparent.png"
+import logo from "../../../FE files/samsung-logo-transparent.png";
 
 let id = 0;
 
@@ -123,7 +123,6 @@ const Brand = (props) => {
       text: "Brand name",
     },
     input: {
-      id: "brand__name",
       type: "text",
       required: true,
     },
@@ -136,7 +135,6 @@ const Brand = (props) => {
       text: "Brand description",
     },
     input: {
-      id: "brand__description",
       type: "text",
     },
   };
@@ -148,7 +146,6 @@ const Brand = (props) => {
       text: "Brand logo",
     },
     input: {
-      id: "brand__logo",
       type: "text",
     },
   };
@@ -171,6 +168,15 @@ const Brand = (props) => {
       }}
       button={{
         text: "Add Brand",
+      }}
+      search={{
+        onSearch: useCallback((term) => {
+          setBrands(
+            DUMMY_DATA.filter((brand) =>
+              brand.name.toLowerCase().includes(term.toLowerCase())
+            )
+          );
+        }),
       }}
       table={{
         heading: Object.keys(DUMMY_DATA[0]),

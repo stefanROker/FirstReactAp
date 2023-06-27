@@ -4,6 +4,14 @@ import Input from "../Inputs/Input";
 import Modal from "../Modals/Modal";
 import classes from "./InputModal.module.css";
 
+/**
+ *
+ * @param {Object} props
+ * @param {() => void} props.onCloseModal
+ * @param {() => void} props.onSubmit
+ * @param {[{ref: React.Reference, label: {text: string}, input: Object.<string, string>}]} props.inputs
+ * @returns
+ */
 const InputModal = (props) => {
   return (
     <Modal className={classes.modal}>
@@ -15,7 +23,7 @@ const InputModal = (props) => {
         }}
       >
         {props.inputs.map((input) => (
-          <Input key={input.name} {...input} />
+          <Input key={input.input.id} {...input} />
         ))}
 
         <ButtonGroup align="right">

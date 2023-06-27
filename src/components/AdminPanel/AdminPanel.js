@@ -2,11 +2,29 @@ import Button from "../UI/Buttons/Button";
 import Card from "../UI/Cards/Card";
 import InputModal from "../UI/Modals/InputModal";
 import classes from "./AdminPanel.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
+/**
+ *
+ * @param {Object} props
+ * @param {{text: string}} props.button
+ * @param {{onSearch: (term: string) => void}} props.search
+ * @param {{inputs: [{ref: React.Reference, label: {text: string}, input: Object}], onSubmit: () => void}} props.modal
+ * @param {{heading: [string], elements: JSX}} props.table
+ * @returns
+ */
 const AdminPanel = (props) => {
   const [showModal, setShowModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState(null);
+
+  useEffect(() => {
+    let timeout = null;
+    if (searchTerm != null) {
+      timeout = setTimeout(() => props.search.onSearch(searchTerm), 300);
+    }
+    return () => clearTimeout(timeout);
+  }, [searchTerm]);
 
   return (
     <>
@@ -33,6 +51,7 @@ const AdminPanel = (props) => {
             className={`${classes["search-input"]} shadow`}
             type="text"
             placeholder="Search..."
+            onChange={(e) => setSearchTerm(e.target.value)}
           ></input>
         </div>
         <div className={classes["table-wrapper"]}>
