@@ -1,4 +1,4 @@
-import { pSBC } from "../../utils";
+import { pSBC } from "../../../utils";
 import styles from "./Button.module.css";
 
 /**
@@ -6,9 +6,9 @@ import styles from "./Button.module.css";
  * @param {?Object} props.style
  * @param {?string} props.className
  * @param {JSX} props.children
- * @param {import("../../utils").EventHandlerCallback} props.onClick
- * @param {?import("../../utils").EventHandlerCallback} props.onMouseEnter
- * @param {?import("../../utils").EventHandlerCallback} props.onMouseLeave
+ * @param {import("../../../utils").EventHandlerCallback} props.onClick
+ * @param {?import("../../../utils").EventHandlerCallback} props.onMouseEnter
+ * @param {?import("../../../utils").EventHandlerCallback} props.onMouseLeave
  */
 const Button = (props) => {
   const defaultBlueBgColor = "#007bff";

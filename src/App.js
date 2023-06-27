@@ -1,13 +1,16 @@
 import "./App.css";
-import Brand from "./components/Brands/Brands";
-import { BrandContextProvider } from "./store/brand-context";
+import Brand from "./components/AdminPanel/Brands/Brands";
+import Navbar from "./components/layout/Navbar";
+import Sidebar from "./components/layout/Sidebar";
 
 function App() {
   return (
     <div className="app">
-      <BrandContextProvider>
+      <Navbar />
+      <div id="admin-panel">
+        <Sidebar />
         <Brand />
-      </BrandContextProvider>
+      </div>
     </div>
   );
 }

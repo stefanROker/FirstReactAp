@@ -6,12 +6,3 @@ body {
   overflow: hidden;
   margin: 0;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-#admin-panel {
-  display: flex;
-}
